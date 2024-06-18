@@ -1,0 +1,7 @@
+We should store environment variables in our root of the project, where we have
+our readme and package.json files
+
+in this project, we are storing that in a file called .env
+
+Never ever push the .env file on github, so include the .env file in .gitignore
+so it does not get pushed on github

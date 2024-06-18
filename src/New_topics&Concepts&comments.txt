@@ -30,3 +30,19 @@ to access the variables without any errors, as by that we ensured we will be
 getting everything in string or our choice of data type (Config.js)
          |
          |
+Now we will be creating authentication services with appwrite, in which we
+built a function or method to create new user account, login a user, get
+current user and logout user refer to (appwrite) folder auth.js file
+         |
+         |
+As we have created auth services, we will now create database, storage and also
+methods for blog posts.
+         |
+         |
+We have now made our appwriteConfig.js file which connects to Appwrite using
+configuration details and provides functionalities to create, update, delete, and
+retrieve posts from a database. Additionally, it allows uploading, deleting, and
+optionally previewing files (likely article images) stored in Appwrite's storage
+bucket
+         |
+         |

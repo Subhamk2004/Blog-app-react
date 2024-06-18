@@ -1,7 +1,32 @@
 We should store environment variables in our root of the project, where we have
 our readme and package.json files
-
+         |
+         |
 in this project, we are storing that in a file called .env
-
+         |
+         |
 Never ever push the .env file on github, so include the .env file in .gitignore
 so it does not get pushed on github
+         |
+         |
+since we are using vite we will have to use Vite_Name in .env files and
+import.meta.env.Vite_Name
+to access it in other files
+         |
+         |
+// we created a database, which is blog-base and in that we created a clooection
+ of articles.
+ //Now an article has basic properties like, title, content, article_image,
+ userId etc, we are calling these properties as attributes in appwrite (https://cloud.appwrite.io)
+         |
+         |
+we created appwrite's endpoint url, project id, bucket or storage id, database
+id, collection id and saved them in (.env)
+         |
+         |
+we created a Config.js file which has an object named Config, and it has all the
+environment variables stored in a simpler and short form, which makes it easy
+to access the variables without any errors, as by that we ensured we will be
+getting everything in string or our choice of data type (Config.js)
+         |
+         |

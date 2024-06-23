@@ -61,10 +61,10 @@ export class AuthService {
 
     async getCurrentUser() {
         try {
-            return await this.account.get()
+            return await this.account.get();
         }
         catch (e) {
-            throw e;
+            console.log('Error in getting current user', e);
         }
         return null; // in case try catch block also cause errors
     }

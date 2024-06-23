@@ -1,5 +1,5 @@
-import {Client, Account, Databases, Storage, Query} from "appwrite";
-import {nanoid} from "@reduxjs/toolkit";
+import { Client, Account, Databases, Storage, Query } from "appwrite";
+import { nanoid } from "@reduxjs/toolkit";
 import config from "../Config/Config.js";
 
 export class Service {
@@ -15,7 +15,7 @@ export class Service {
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, articleImage, status, userId}) {
+    async createPost({ title, slug, content, articleImage, status, userId }) {
         try {
             return await this.databases.createDocument(
                 config.appwriteDatabaseId,
@@ -34,7 +34,7 @@ export class Service {
         }
     }
 
-    async updatePost(slug, {title, content, articleImage, status}) {
+    async updatePost(slug, { title, content, articleImage, status }) {
         try {
             return await this.databases.updateDocument(
                 config.appwriteDatabaseId,
@@ -108,7 +108,7 @@ export class Service {
         }
     }
 
-    async deleteFile(fileId){
+    async deleteFile(fileId) {
         try {
             await this.bucket.deleteFile(
                 config.appwriteBucketId,
@@ -120,7 +120,7 @@ export class Service {
         }
     }
 
-    getFilePreview(fileId){
+    getFilePreview(fileId) {
         return this.bucket.getFilePreview(
             config.appwriteBucketId,
             fileId

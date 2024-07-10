@@ -37,3 +37,15 @@ let Input = React.forwardRef(function Input({
     )
 })
 export default Input
+
+//  The use of forwardRef allows parent components to get a reference to the actual input element if needed.
+
+// Why use forwardRef:
+
+// Ref Forwarding: It allows a component to take a ref prop and pass it down to a child component.
+
+// Reusability: It makes components more reusable, especially when they're meant to be used as wrappers for native elements like inputs.
+
+// Imperative Actions: It enables parent components to perform imperative actions on child elements (like focusing an input).
+
+// Composition: It helps in creating higher-order components that don't break the ref chain.

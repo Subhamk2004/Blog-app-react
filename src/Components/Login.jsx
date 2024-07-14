@@ -80,7 +80,7 @@ function Login() {
                         type='submit'
                         className='w-full'
                     >
-                        Sing In
+                        Sign In
                     </Button>
                 </div>
             </form>

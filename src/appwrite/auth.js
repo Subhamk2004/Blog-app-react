@@ -1,6 +1,6 @@
 import {Client, Account} from "appwrite";
 import {nanoid} from "@reduxjs/toolkit";
-import config from "../Config/Config.js";
+import Config from "../Config/Config.js";
 
 // const client = new Client()
 //     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
@@ -25,8 +25,8 @@ export class AuthService {
 
     constructor() {
         this.client
-            .setEndpoint(config.appwriteUrl)
-            .setProject(config.appwriteProjectId);
+            .setEndpoint(Config.appwriteUrl)
+            .setProject(Config.appwriteProjectId);
         this.account = new Account(this.client)
     }
 
@@ -51,7 +51,7 @@ export class AuthService {
 
     async login({email, password}){
         try {
-            let login_user = await this.account.createEmailSession(email, password);
+            let login_user = await this.account.createEmailPasswordSession(email, password);
             return login_user;
         }
         catch (e) {

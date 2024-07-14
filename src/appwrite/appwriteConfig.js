@@ -1,6 +1,6 @@
 import { Client, Account, Databases, Storage, Query } from "appwrite";
 import { nanoid } from "@reduxjs/toolkit";
-import config from "../Config/Config.js";
+import Config from "../Config/Config.js";
 
 export class Service {
     client = new Client();
@@ -9,8 +9,8 @@ export class Service {
 
     constructor() {
         this.client
-            .setEndpoint(config.appwriteUrl)
-            .setProject(config.appwriteProjectId);
+            .setEndpoint(Config.appwriteUrl)
+            .setProject(Config.appwriteProjectId);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
     }
@@ -18,8 +18,8 @@ export class Service {
     async createPost({ title, slug, content, articleImage, status, userId }) {
         try {
             return await this.databases.createDocument(
-                config.appwriteDatabaseId,
-                config.appwriteCollectionId,
+                Config.appwriteDatabaseId,
+                Config.appwriteCollectionId,
                 slug,
                 {
                     title,
@@ -37,8 +37,8 @@ export class Service {
     async updatePost(slug, { title, content, articleImage, status }) {
         try {
             return await this.databases.updateDocument(
-                config.appwriteDatabaseId,
-                config.appwriteCollectionId,
+                Config.appwriteDatabaseId,
+                Config.appwriteCollectionId,
                 slug,
                 {
                     title,
@@ -55,8 +55,8 @@ export class Service {
     async deletePost(slug) {
         try {
             await this.databases.deleteDocument(
-                config.appwriteDatabaseId,
-                config.appwriteCollectionId,
+                Config.appwriteDatabaseId,
+                Config.appwriteCollectionId,
                 slug
             )
             return true;
@@ -70,8 +70,8 @@ export class Service {
     async getPost(slug) {
         try {
             return await this.databases.getDocument(
-                config.appwriteDatabaseId,
-                config.appwriteCollectionId,
+                Config.appwriteDatabaseId,
+                Config.appwriteCollectionId,
                 slug
             )
         } catch (e) {
@@ -82,8 +82,8 @@ export class Service {
     async getPosts(queries = [Query.equal('status', 'active')]) {
         try {
             return await this.databases.listDocuments(
-                config.appwriteDatabaseId,
-                config.appwriteCollectionId,
+                Config.appwriteDatabaseId,
+                Config.appwriteCollectionId,
                 queries,
                 // [
                 //     Query.equal('status', 'active')
@@ -98,7 +98,7 @@ export class Service {
     async fileUpload(file) {
         try {
             return await this.bucket.createFile(
-                config.appwriteBucketId,
+                Config.appwriteBucketId,
                 nanoid(),
                 file
             )
@@ -111,7 +111,7 @@ export class Service {
     async deleteFile(fileId) {
         try {
             await this.bucket.deleteFile(
-                config.appwriteBucketId,
+                Config.appwriteBucketId,
                 fileId
             )
         }
@@ -122,7 +122,7 @@ export class Service {
 
     getFilePreview(fileId) {
         return this.bucket.getFilePreview(
-            config.appwriteBucketId,
+            Config.appwriteBucketId,
             fileId
         )
     }
